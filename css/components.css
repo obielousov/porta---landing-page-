@@ -1,0 +1,108 @@
+.button {
+  padding: toRem(16) toRem(32);
+  font-weight: 500;
+  background-color: var(--btn-color);
+  border-radius: toRem(59);
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+@media (any-hover: hover) {
+  .button:hover {
+    background-color: var(--btn-hover-color);
+  }
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: clamp(1.875rem, 0.581rem + 4.2254vw, 3.75rem); /* 60/30>1200-490 */
+}
+.section__icon {
+  -webkit-margin-after: toRem(12);
+          margin-block-end: toRem(12);
+}
+.section__subtitle {
+  -webkit-margin-after: toRem(12);
+          margin-block-end: toRem(12);
+  color: rgba(255, 255, 255, 0.4);
+}
+.section__title {
+  text-align: center;
+  font-family: "Inter Display";
+  font-size: clamp(2.375rem, 1.7711rem + 1.9718vw, 3.25rem); /* 52/38>1200-490 */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px; /* 115.385% */
+  letter-spacing: -1.04px;
+}
+.section__header[data-watch] .section__icon,
+.section__header[data-watch] .section__subtitle,
+.section__header[data-watch] .section__title {
+  -webkit-transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.section__header[data-watch] .section__subtitle {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+.section__header[data-watch] .section__title {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+.section__header[data-watch]:not(._watcher-view) .section__icon,
+.section__header[data-watch]:not(._watcher-view) .section__subtitle,
+.section__header[data-watch]:not(._watcher-view) .section__title {
+  opacity: 0;
+  -webkit-transform: translateY(toRem(30));
+      -ms-transform: translateY(toRem(30));
+          transform: translateY(toRem(30));
+  -webkit-filter: blur(toRem(6));
+          filter: blur(toRem(6));
+}
+.section__title[data-watch] {
+  -webkit-transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), -webkit-filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.section__title[data-watch]:not(._watcher-view) {
+  opacity: 0;
+  -webkit-transform: translateY(toRem(30));
+      -ms-transform: translateY(toRem(30));
+          transform: translateY(toRem(30));
+  -webkit-filter: blur(toRem(6));
+          filter: blur(toRem(6));
+}
+@media (prefers-reduced-motion: reduce) {
+  .section__header[data-watch] .section__icon,
+  .section__header[data-watch] .section__subtitle,
+  .section__header[data-watch] .section__title {
+    -webkit-transition: none;
+    transition: none;
+    -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+  }
+  .section__header[data-watch]:not(._watcher-view) .section__icon,
+  .section__header[data-watch]:not(._watcher-view) .section__subtitle,
+  .section__header[data-watch]:not(._watcher-view) .section__title {
+    opacity: 1;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+    -webkit-filter: none;
+            filter: none;
+  }
+  .section__title[data-watch] {
+    -webkit-transition: none;
+    transition: none;
+  }
+  .section__title[data-watch]:not(._watcher-view) {
+    opacity: 1;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+    -webkit-filter: none;
+            filter: none;
+  }
+}

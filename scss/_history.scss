@@ -1,0 +1,124 @@
+.history {
+	padding-block: clamp(2.5rem, -0.088rem + 8.4507vw, 6.25rem); /* 100/40>1200-490 */
+	// .history__container
+
+	&__container {
+	}
+
+	// .history__header
+
+	&__header {
+	}
+
+	// .history__content
+
+	&__content {
+		display: grid;
+		gap: toRem(20);
+
+		.card-history {
+			transition:
+				opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+				transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+				filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+			&:nth-child(2) {
+				transition-delay: 0.08s;
+			}
+			&:nth-child(3) {
+				transition-delay: 0.16s;
+			}
+			&:nth-child(4) {
+				transition-delay: 0.24s;
+			}
+			&:nth-child(5) {
+				transition-delay: 0.32s;
+			}
+		}
+	}
+
+	// .history__card
+
+	&__card {
+	}
+}
+.card-history {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: clamp(1.25rem, -1.338rem + 8.4507vw, 5rem); /* 80/20>1200-490 */
+
+	padding: clamp(0.625rem, -0.3239rem + 3.0986vw, 2rem); /* 32/10>1200-490 */
+
+	background-color: var(--bg-color-2);
+
+	border-radius: toRem(16);
+	// .card-history__label
+
+	&__label {
+	}
+
+	// .card-history__subtitle
+
+	&__subtitle {
+	}
+
+	// .card-history__title
+
+	&__title {
+		font-size: clamp(1.5rem, 0.8099rem + 2.2535vw, 2.5rem); /* 40/24>1200-490 */
+	}
+
+	// .card-history__content
+
+	&__content {
+		padding-inline-start: clamp(1.25rem, -15.3565rem + 34.642vw, 10.625rem); /* 170/20>1200-767 */
+		padding-inline-end: clamp(0rem, -31.4417rem + 65.5889vw, 17.75rem); /* 284/0>1200-767 */
+
+		border-left: toRem(1) solid var(--btn-color);
+	}
+
+	// .card-history__role
+
+	&__role {
+		font-size: clamp(1.5rem, -0.2714rem + 3.6952vw, 2.5rem); /* 40/24>1200-767 */
+		text-wrap: balance;
+		margin-bottom: toRem(12);
+	}
+
+	// .card-history__text
+
+	&__text {
+		text-wrap: pretty;
+		// max-width: toRem(476);
+	}
+}
+
+// Прихований стан до появи у в'юпорті (data-watch + _watcher-view через IntersectionObserver)
+
+.history__content[data-watch]:not(._watcher-view) {
+	.card-history {
+		opacity: 0;
+		transform: translateY(toRem(30));
+		filter: blur(toRem(6));
+	}
+}
+
+// Анімацію вимикаємо для prefers-reduced-motion
+
+@media (prefers-reduced-motion: reduce) {
+	.history__content {
+		.card-history {
+			transition: none;
+			transition-delay: 0s;
+		}
+	}
+
+	.history__content[data-watch]:not(._watcher-view) {
+		.card-history {
+			opacity: 1;
+			transform: none;
+			filter: none;
+		}
+	}
+}

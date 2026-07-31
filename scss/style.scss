@@ -1,0 +1,58 @@
+@use "sass:math";
+
+// Reset
+@import "_reset.scss";
+
+// Fonts
+@import "_fonts.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+// Google Fonts (Plugin)
+
+@import "_mixin.scss";
+@import "variables.scss";
+@import "components.scss";
+
+/* Base styles */
+html,
+body {
+	height: 100%;
+}
+
+body {
+	font-family: "Inter", sans-serif;
+	font-size: toRem(16);
+	line-height: 1.5;
+	color: var(--white-color);
+	background: var(--bg-color);
+}
+
+/* Sticky footer */
+.wrapper {
+	min-height: 100%;
+	overflow: clip;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper > main {
+	flex: 1 1 auto;
+}
+
+/* Container */
+[class*="__container"] {
+	max-width: 1230px;
+	margin: 0 auto;
+	padding-inline: 15px;
+}
+
+@import "_header.scss";
+@import "_hero.scss";
+@import "_services.scss";
+@import "_portfolio.scss";
+@import "_testimonials.scss";
+@import "_history.scss";
+@import "_blog.scss";
+@import "_faq.scss";
+@import "_work.scss";
+@import "_footer.scss";

@@ -1,0 +1,302 @@
+.testimonials {
+	padding-block: clamp(2.5rem, -0.088rem + 8.4507vw, 6.25rem); /* 100/40>1200-490 */
+	// .testimonials__slider
+
+	&__slider {
+		position: relative;
+	}
+
+	// .testimonials__container
+
+	&__container {
+	}
+
+	// .testimonials__body
+
+	&__body {
+	}
+
+	// Поява слайдера при скролі
+
+	&__body[data-watch] {
+		transition:
+			opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+			filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		display: none;
+		position: absolute;
+		width: toRem(48);
+		height: toRem(48);
+		top: 50%;
+		margin-top: 0;
+		transform: translate(0, -50%);
+		z-index: 10;
+
+		background-color: var(--bg-color-3);
+		background-image: url(../img/portfolio-arrow.svg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: toRem(20) toRem(10);
+		border-radius: 50%;
+
+		box-shadow: 0 toRem(4) toRem(12) rgba(0, 0, 0, 0.35);
+
+		transition: background-color 0.3s;
+
+		svg {
+			display: none;
+		}
+
+		@media (width >= toEm(768)) {
+			display: flex;
+		}
+
+		html:not([data-fls-touch]) & {
+			@media (any-hover: hover), (pointer: fine) {
+				&:hover {
+					background-color: var(--btn-color);
+				}
+			}
+		}
+	}
+
+	.swiper-button-prev {
+		left: 0;
+		transform: translate(0, -50%) rotate(180deg);
+	}
+	.swiper-button-next {
+		right: 0;
+		transform: translate(0, -50%);
+	}
+
+	@media (width >= toEm(768)) and (width < toEm(1326)) {
+		&__slider {
+			padding-inline: toRem(60);
+		}
+	}
+
+	@media (width >= toEm(1326)) {
+		.swiper-button-prev {
+			left: 0;
+			transform: translate(-100%, -50%) rotate(180deg);
+		}
+		.swiper-button-next {
+			right: 0;
+			transform: translate(100%, -50%);
+		}
+		&__slider {
+			padding-inline: 0;
+		}
+	}
+
+	.swiper-pagination {
+		position: static;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: toRem(8);
+		margin-top: toRem(24);
+
+		.swiper-pagination-bullet {
+			width: toRem(8);
+			height: toRem(8);
+			margin: 0;
+
+			background-color: var(--bg-spollers-color);
+			opacity: 1;
+			border-radius: 50%;
+
+			transition: background-color 0.3s;
+
+			&.swiper-pagination-bullet-active {
+				background-color: var(--btn-color);
+			}
+		}
+
+		@media (width >= toEm(768)) {
+			display: none;
+		}
+	}
+
+	// .testimonials__card
+
+	&__card {
+		height: 100%;
+	}
+
+	// .testimonials__header
+
+	&__header {
+	}
+}
+
+.swiper {
+}
+.card-testimonials {
+	display: flex;
+	flex-direction: column;
+
+	//.card-testimonials__top
+
+	&__top {
+		display: flex;
+		flex-direction: column;
+		padding: clamp(1rem, 0.3099rem + 2.2535vw, 2rem); /* 32/16>1200-490 */
+		background-color: var(--bg-color-2);
+		border-radius: toRem(20) toRem(20) toRem(0) toRem(0);
+	}
+
+	// .card-testimonials__logo
+
+	&__logo {
+		img {
+			margin-bottom: toRem(27);
+		}
+	}
+
+	// .card-testimonials__title
+
+	&__title {
+		flex-grow: 1;
+		margin-bottom: toRem(16);
+
+		font-size: clamp(1.125rem, 0.8662rem + 0.8451vw, 1.5rem); /* 24/18>1200-490 */
+		font-weight: 500;
+		line-height: 1.33;
+		letter-spacing: 0.24px;
+	}
+
+	// .card-testimonials__text
+
+	&__text {
+		margin-top: auto;
+	}
+
+	// .card-testimonials__bottom
+
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		padding-block: clamp(0.75rem, 0.2324rem + 1.6901vw, 1.5rem); /* 24/12>1200-490 */
+		padding-inline: clamp(1rem, 0.3099rem + 2.2535vw, 2rem); /* 32/16>1200-490 */
+
+		background-color: var(--bg-color-3);
+
+		border-radius: toRem(0) toRem(0) toRem(20) toRem(20);
+	}
+
+	// .card-testimonials__person
+
+	&__person {
+		display: flex;
+		align-items: center;
+		gap: toRem(12);
+	}
+
+	// .card-testimonials__media
+
+	&__media {
+	}
+
+	//.card-testimonials__about
+
+	&__about {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// .card-testimonials__name
+
+	&__name {
+		font-size: toRem(18);
+		font-weight: 500;
+
+		margin-bottom: toRem(4);
+	}
+
+	// .card-testimonials__role
+
+	&__role {
+		color: var(--gray-color);
+	}
+
+	// .card-testimonials__social
+
+	&__social {
+		display: none;
+
+		@media (width >= toEm(1100)) {
+			display: block;
+		}
+	}
+
+	// .card-testimonials__list
+
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: toRem(4);
+	}
+
+	// .card-testimonials__item
+
+	&__item {
+	}
+
+	// .card-testimonials__link
+
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 32px;
+		height: 32px;
+
+		background-color: var(--bg-color);
+
+		border-radius: 50%;
+
+		transition: background-color 0.5s;
+
+		html:not([data-fls-touch]) & {
+			@media (any-hover: hover), (pointer: fine) {
+				&:hover {
+					background-color: var(--btn-hover-color);
+				}
+			}
+		}
+	}
+
+	// .card-testimonials__icon
+
+	&__icon {
+	}
+}
+
+// Прихований стан до появи у в'юпорті (data-watch + _watcher-view через IntersectionObserver)
+
+.testimonials__body[data-watch]:not(._watcher-view) {
+	opacity: 0;
+	transform: translateY(toRem(30));
+	filter: blur(toRem(6));
+}
+
+// Анімацію вимикаємо для prefers-reduced-motion
+
+@media (prefers-reduced-motion: reduce) {
+	.testimonials__body[data-watch] {
+		transition: none;
+	}
+
+	.testimonials__body[data-watch]:not(._watcher-view) {
+		opacity: 1;
+		transform: none;
+		filter: none;
+	}
+}

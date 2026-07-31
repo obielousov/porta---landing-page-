@@ -1,0 +1,228 @@
+.hero {
+	padding-block: clamp(2.5rem, -0.088rem + 8.4507vw, 6.25rem); /* 100/40>1200-490 */
+
+	// .hero__container
+
+	&__container {
+	}
+
+	// .hero__body
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: clamp(1.875rem, 1.0239rem + 2.7817vw, 3.125rem); /* 50/30>1200-490 */
+
+		@media (width >= toEm(768)) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	// .hero__content
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	// .hero__title
+
+	&__title {
+		text-align: center;
+		text-wrap: balance;
+		font-size: clamp(2.5rem, 1.4648rem + 3.3803vw, 4rem); /* 64/40>1200-490 */
+		font-weight: 500;
+		line-height: 1.12;
+		letter-spacing: -1.28px;
+
+		margin-bottom: toRem(35);
+
+		transition:
+			opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+			filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+		transition-delay: 0.05s;
+
+		@media (width >= toEm(767)) {
+		}
+	}
+
+	// .hero__button
+
+	&__button {
+		transition:
+			opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+			filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+			background-color 0.3s;
+		transition-delay: 0.17s;
+	}
+
+	// .hero__title-top
+
+	&__title-top {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: toRem(16);
+	}
+
+	// .hero__title-arrow
+
+	&__title-arrow {
+		display: inline-block;
+		width: toRem(146);
+		height: auto;
+	}
+
+	// .hero__title-bottom
+
+	&__title-bottom {
+		display: block;
+	}
+
+	// .hero__media
+
+	&__media {
+		position: relative;
+
+		width: 100%;
+
+		transition:
+			opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+			filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+		transition-delay: 0.12s;
+
+		@media (width >= toEm(992)) {
+			flex: 1 1 toRem(480);
+		}
+
+		img {
+			position: relative;
+			z-index: 2;
+			width: 100%;
+			object-fit: cover;
+			aspect-ratio: 1;
+			height: auto;
+			border-radius: toRem(24);
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: 1;
+			top: -15%;
+			right: -12%;
+			width: 70%;
+			height: 70%;
+
+			background: radial-gradient(circle, rgba(242, 78, 30, 0.45) 0%, transparent 70%);
+			filter: blur(toRem(40));
+
+			pointer-events: none;
+		}
+	}
+
+	// .hero__logos
+
+	&__logos {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 24px;
+		margin-top: clamp(2.5rem, -0.088rem + 8.4507vw, 6.25rem); /* 100/40>1200-490 */
+
+		@media (width >= toEm(768)) {
+			justify-content: space-between;
+		}
+	}
+
+	// .hero__logo
+
+	&__logo {
+		transition:
+			opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+		&:nth-child(1) {
+			transition-delay: 0.45s;
+		}
+		&:nth-child(2) {
+			transition-delay: 0.55s;
+		}
+		&:nth-child(3) {
+			transition-delay: 0.65s;
+		}
+		&:nth-child(4) {
+			transition-delay: 0.75s;
+		}
+
+		img {
+			opacity: 0.4;
+
+			transition: opacity 0.3s;
+		}
+
+		html:not([data-fls-touch]) & {
+			@media (any-hover: hover), (pointer: fine) {
+				&:hover {
+					img {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+
+	// Прихований стан до завантаження (html.loaded додається у windowLoad)
+
+	html:not(.loaded) & {
+		&__title,
+		&__button,
+		&__media {
+			opacity: 0;
+			transform: translateY(toRem(30));
+			filter: blur(toRem(6));
+		}
+
+		&__media {
+			transform: translateY(toRem(40)) scale(1.05);
+			filter: blur(toRem(8));
+		}
+
+		&__logo {
+			opacity: 0;
+			transform: translateY(toRem(20));
+		}
+	}
+
+	// Анімацію вимикаємо для prefers-reduced-motion
+
+	@media (prefers-reduced-motion: reduce) {
+		&__title,
+		&__button,
+		&__media,
+		&__logo {
+			transition: none;
+			transition-delay: 0s;
+		}
+
+		html:not(.loaded) & {
+			&__title,
+			&__button,
+			&__media,
+			&__logo {
+				opacity: 1;
+				transform: none;
+				filter: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,111 @@
+.service {
+	padding-block: clamp(3.75rem, 2.0246rem + 5.6338vw, 6.25rem); /* 100/60>1200-490 */
+	// .service__container
+
+	&__container {
+	}
+
+	// .service__header
+
+	&__header {
+	}
+
+	// .service__content
+
+	&__content {
+		display: grid;
+
+		gap: toRem(25);
+
+		@media (width >= toEm(992)) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.card-service {
+			transition:
+				opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+				transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+				filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+			&:nth-child(2) {
+				transition-delay: 0.12s;
+			}
+			&:nth-child(3) {
+				transition-delay: 0.24s;
+			}
+		}
+	}
+
+	// .service__card
+
+	&__card {
+	}
+}
+
+.card-service {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: clamp(1rem, 0.3099rem + 2.2535vw, 2rem); /* 32/16>1200-490 */
+
+	padding-block: clamp(1.25rem, 0.3873rem + 2.8169vw, 2.5rem); /* 40/20>1200-490 */
+	padding-inline: clamp(0.625rem, 0.1937rem + 1.4085vw, 1.25rem); /* 20/10>1200-490 */
+
+	background-color: var(--bg-color-2);
+
+	border-radius: toRem(20);
+
+	// .card-service__icon
+
+	&__icon {
+	}
+
+	// .card-service__title
+
+	&__title {
+		font-size: clamp(1.5rem, 1.1549rem + 1.1268vw, 2rem); /* 32/24>1200-490 */
+		font-weight: 500;
+		line-height: 1.37;
+	}
+
+	// .card-service__text
+
+	&__text {
+		color: var(--gray-color);
+	}
+
+	// .card-service__link
+
+	&__link {
+		font-weight: 600;
+	}
+}
+
+// Прихований стан до появи у в'юпорті (data-watch + _watcher-view через IntersectionObserver)
+
+.service__content[data-watch]:not(._watcher-view) {
+	.card-service {
+		opacity: 0;
+		transform: translateY(toRem(30));
+		filter: blur(toRem(6));
+	}
+}
+
+// Анімацію вимикаємо для prefers-reduced-motion
+
+@media (prefers-reduced-motion: reduce) {
+	.service__content {
+		.card-service {
+			transition: none;
+			transition-delay: 0s;
+		}
+	}
+
+	.service__content[data-watch]:not(._watcher-view) {
+		.card-service {
+			opacity: 1;
+			transform: none;
+			filter: none;
+		}
+	}
+}
